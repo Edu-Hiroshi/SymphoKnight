@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlt8hky73i5d4"]
+
+[ext_resource type="Script" path="res://maestro.gd" id="1_h2ewy"]
+[ext_resource type="Texture2D" uid="uid://caokmbuk3cgve" path="res://icon.svg" id="2_w0ssq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1cxo"]
+size = Vector2(127, 129)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_h2ewy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_w0ssq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_m1cxo")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+position_smoothing_enabled = true
