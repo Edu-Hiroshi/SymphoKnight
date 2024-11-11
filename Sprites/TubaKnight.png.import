@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4300iaxbtbup"
-path="res://.godot/imported/TubaKnight.png-faee5b0aae397423641fe7efdf8122e3.ctex"
+uid="uid://cojuopwnn6f7x"
+path="res://.godot/imported/TubaKnight.png-d360832ffe3a578529d3f068cde76ac4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/TubaKnight.png"
-dest_files=["res://.godot/imported/TubaKnight.png-faee5b0aae397423641fe7efdf8122e3.ctex"]
+source_file="res://sprites/TubaKnight.png"
+dest_files=["res://.godot/imported/TubaKnight.png-d360832ffe3a578529d3f068cde76ac4.ctex"]
 
 [params]
 

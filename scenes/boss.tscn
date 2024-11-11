@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://dmvpxtfxtrd8r"]
+
+[ext_resource type="Script" path="res://script/boss.gd" id="1_l4a3e"]
+[ext_resource type="Texture2D" uid="uid://cojuopwnn6f7x" path="res://sprites/TubaKnight.png" id="2_4wsvy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_paof4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4wsvy")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sjbiq"]
+size = Vector2(206, 268)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqlwl"]
+size = Vector2(274, 340)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rdwv3"]
+radius = 852.0
+height = 1704.0
+
+[node name="boss" type="CharacterBody2D"]
+script = ExtResource("1_l4a3e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_paof4")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(58, 16)
+shape = SubResource("RectangleShape2D_sjbiq")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(57, 7)
+shape = SubResource("RectangleShape2D_yqlwl")
+
+[node name="detection_area" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
+shape = SubResource("CapsuleShape2D_rdwv3")
+
+[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
