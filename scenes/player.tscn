@@ -1,12 +1,14 @@
-[gd_scene load_steps=32 format=3 uid="uid://dlt8hky73i5d4"]
+[gd_scene load_steps=40 format=3 uid="uid://dlt8hky73i5d4"]
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_vua08"]
 [ext_resource type="Texture2D" uid="uid://dawthuy0fotuf" path="res://sprites/down/down_0000.png" id="2_8p4dh"]
 [ext_resource type="Texture2D" uid="uid://crmk7bwescpqt" path="res://sprites/down/down_0001.png" id="3_31x3j"]
+[ext_resource type="Texture2D" uid="uid://btiwss5v1w7qr" path="res://sprites/attackA/attack_0001.png" id="3_d2avy"]
 [ext_resource type="Texture2D" uid="uid://blihobusbk2rh" path="res://sprites/down/down_0002.png" id="4_h0y8d"]
 [ext_resource type="Texture2D" uid="uid://r2umop4p07a2" path="res://sprites/down/down_0003.png" id="5_f82t7"]
 [ext_resource type="Texture2D" uid="uid://cptpukd3ss4mi" path="res://sprites/down diagonal/down_diagonal_0000.png" id="6_vr6nk"]
 [ext_resource type="Texture2D" uid="uid://5gnslo643erl" path="res://sprites/down diagonal/down_diagonal_0001.png" id="7_irs5w"]
+[ext_resource type="Texture2D" uid="uid://bqcmnadrgem2m" path="res://sprites/attackA/attack_0006.png" id="7_ljswh"]
 [ext_resource type="Texture2D" uid="uid://bau5uv7086f4k" path="res://sprites/down diagonal/down_diagonal_0002.png" id="8_e1yqi"]
 [ext_resource type="Texture2D" uid="uid://dheq3rwrxowx0" path="res://sprites/down diagonal/down_diagonal_0003.png" id="9_gqtf3"]
 [ext_resource type="Texture2D" uid="uid://dic0t1mq5eugm" path="res://sprites/idle front/idle_front_0000.png" id="10_2ju4b"]
@@ -29,6 +31,36 @@
 [ext_resource type="Texture2D" uid="uid://thb5f3gwe15x" path="res://sprites/up diagonal/up_diagonal_0001.png" id="27_pv32g"]
 [ext_resource type="Texture2D" uid="uid://ck5au230014d2" path="res://sprites/up diagonal/up_diagonal_0002.png" id="28_k5jw5"]
 [ext_resource type="Texture2D" uid="uid://df0n7or8m3fxc" path="res://sprites/up diagonal/up_diagonal_0003.png" id="29_6xmhu"]
+[ext_resource type="Texture2D" uid="uid://db014dma1wvap" path="res://sprites/attackA/attack_0000.png" id="30_e2tlc"]
+[ext_resource type="Texture2D" uid="uid://bsvcmvop40487" path="res://sprites/attackA/attack_0002.png" id="31_kplpt"]
+[ext_resource type="Texture2D" uid="uid://c5yak5fuli88m" path="res://sprites/attackA/attack_0003.png" id="32_qitgq"]
+[ext_resource type="Texture2D" uid="uid://12qhdmxiylkn" path="res://sprites/attackA/attack_0005.png" id="33_j4gf0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d0yuk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_e2tlc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_d2avy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_kplpt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_qitgq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_j4gf0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ljswh")
+}],
+"loop": false,
+"name": &"attackA",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vkbgc"]
 animations = [{
@@ -156,10 +188,19 @@ animations = [{
 radius = 29.5
 height = 123.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ve3qw"]
+radius = 41.0
+height = 148.0
+
 [node name="player" type="CharacterBody2D"]
 collision_layer = 3
 script = ExtResource("1_vua08")
 metadata/_edit_group_ = true
+
+[node name="attackAnim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_d0yuk")
+animation = &"attackA"
+offset = Vector2(20, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vkbgc")
@@ -172,3 +213,20 @@ shape = SubResource("CapsuleShape2D_of3dv")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.7, 0.7)
 position_smoothing_enabled = true
+
+[node name="playerHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playerHitbox"]
+position = Vector2(0, 15)
+shape = SubResource("CapsuleShape2D_ve3qw")
+
+[node name="attackCooldown" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="dealAttackTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="body_entered" from="playerHitbox" to="." method="_on_player_hitbox_body_entered"]
+[connection signal="body_exited" from="playerHitbox" to="." method="_on_player_hitbox_body_exited"]
+[connection signal="timeout" from="attackCooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="dealAttackTimer" to="." method="_on_deal_attack_timer_timeout"]
