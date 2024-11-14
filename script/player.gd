@@ -55,11 +55,12 @@ func _physics_process(_delta):
 	if health <= 0:
 		is_alive = false #add menu later
 		health = 0
-		print("you died")
+		get_tree().change_scene_to_file("res://scenes/gameover.tscn")
+		
 
 func enemy_attack():
 	if enemy_in_range and enemy_attack_cooldown:
-		health = health - 1
+		health = health - 10
 		enemy_attack_cooldown = false
 		$attackCooldown.start()
 		print(health)

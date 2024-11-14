@@ -1,15 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3gv3yq6uolqj"]
+[gd_scene load_steps=5 format=3 uid="uid://b3gv3yq6uolqj"]
 
 [ext_resource type="PackedScene" uid="uid://dlt8hky73i5d4" path="res://scenes/player.tscn" id="1_01fl2"]
+[ext_resource type="Script" path="res://scenes/arena.gd" id="1_i2d27"]
 [ext_resource type="PackedScene" uid="uid://dmvpxtfxtrd8r" path="res://scenes/boss.tscn" id="2_ne7xt"]
 [ext_resource type="Texture2D" uid="uid://b5s6pw5ogdjm1" path="res://sprites/Background.png" id="3_2st12"]
 
 [node name="arena" type="Node2D"]
+script = ExtResource("1_i2d27")
 
 [node name="player" parent="." instance=ExtResource("1_01fl2")]
 
 [node name="boss" parent="." instance=ExtResource("2_ne7xt")]
-position = Vector2(901, -26)
+position = Vector2(0, -1000)
 
 [node name="background" type="Sprite2D" parent="."]
 z_index = -2
@@ -21,3 +23,5 @@ texture = ExtResource("3_2st12")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="background/Collision"]
 build_mode = 1
 polygon = PackedVector2Array(-1755, -1404, -1748, 1247, 1751, 1252, 1750, -1398)
+
+[node name="startPosition" type="Marker2D" parent="."]

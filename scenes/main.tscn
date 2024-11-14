@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjlknaphsgfer"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_gob6c"]
+[ext_resource type="PackedScene" uid="uid://b3gv3yq6uolqj" path="res://scenes/arena.tscn" id="2_otqlr"]
+
+[node name="main" type="Node"]
+script = ExtResource("1_gob6c")
+
+[node name="startTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="startPosition" type="Marker2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="arena" parent="." instance=ExtResource("2_otqlr")]
