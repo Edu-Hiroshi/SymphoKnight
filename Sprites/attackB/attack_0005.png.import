@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dv513gdxxpcq1"
-path="res://.godot/imported/attack_0001.png-03c93a7d56ca816f974a8d4c5f5d5122.ctex"
+uid="uid://ceyvur11vtrl4"
+path="res://.godot/imported/attack_0005.png-965caab4cdfc916b82b0dd2ed2091810.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/attackA/attack_0001.png"
-dest_files=["res://.godot/imported/attack_0001.png-03c93a7d56ca816f974a8d4c5f5d5122.ctex"]
+source_file="res://sprites/attackB/attack_0005.png"
+dest_files=["res://.godot/imported/attack_0005.png-965caab4cdfc916b82b0dd2ed2091810.ctex"]
 
 [params]
 
