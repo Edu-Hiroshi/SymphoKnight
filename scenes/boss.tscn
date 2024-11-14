@@ -51,6 +51,15 @@ shape = SubResource("CapsuleShape2D_rdwv3")
 [node name="takeDamage" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="healthbar" type="ProgressBar" parent="."]
+modulate = Color(1, 0.32, 0.478666, 1)
+offset_left = -81.0
+offset_top = 220.0
+offset_right = 198.0
+offset_bottom = 247.0
+show_percentage = false
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]

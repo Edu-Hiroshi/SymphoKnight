@@ -1,14 +1,20 @@
-[gd_scene load_steps=40 format=3 uid="uid://dlt8hky73i5d4"]
+[gd_scene load_steps=46 format=3 uid="uid://dlt8hky73i5d4"]
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_vua08"]
 [ext_resource type="Texture2D" uid="uid://dawthuy0fotuf" path="res://sprites/down/down_0000.png" id="2_8p4dh"]
+[ext_resource type="Texture2D" uid="uid://to2emh3slqrn" path="res://sprites/attackA/attack_0000.png" id="2_kpc2r"]
 [ext_resource type="Texture2D" uid="uid://crmk7bwescpqt" path="res://sprites/down/down_0001.png" id="3_31x3j"]
-[ext_resource type="Texture2D" uid="uid://btiwss5v1w7qr" path="res://sprites/attackA/attack_0001.png" id="3_d2avy"]
+[ext_resource type="Texture2D" uid="uid://dsetqkrss2yiy" path="res://sprites/attackB/attack_0001.png" id="3_d2avy"]
+[ext_resource type="Texture2D" uid="uid://dv513gdxxpcq1" path="res://sprites/attackA/attack_0001.png" id="3_xl63i"]
+[ext_resource type="Texture2D" uid="uid://b8vihyip1vgk4" path="res://sprites/attackA/attack_0002.png" id="4_2rucu"]
 [ext_resource type="Texture2D" uid="uid://blihobusbk2rh" path="res://sprites/down/down_0002.png" id="4_h0y8d"]
+[ext_resource type="Texture2D" uid="uid://c663igimqniu2" path="res://sprites/attackA/attack_0003.png" id="5_5bwn8"]
 [ext_resource type="Texture2D" uid="uid://r2umop4p07a2" path="res://sprites/down/down_0003.png" id="5_f82t7"]
 [ext_resource type="Texture2D" uid="uid://cptpukd3ss4mi" path="res://sprites/down diagonal/down_diagonal_0000.png" id="6_vr6nk"]
+[ext_resource type="Texture2D" uid="uid://gk88prhi7pcm" path="res://sprites/attackA/attack_0005.png" id="6_ye31t"]
+[ext_resource type="Texture2D" uid="uid://ck0q2m8eknr34" path="res://sprites/attackA/attack_0006.png" id="7_ga3ph"]
 [ext_resource type="Texture2D" uid="uid://5gnslo643erl" path="res://sprites/down diagonal/down_diagonal_0001.png" id="7_irs5w"]
-[ext_resource type="Texture2D" uid="uid://bqcmnadrgem2m" path="res://sprites/attackA/attack_0006.png" id="7_ljswh"]
+[ext_resource type="Texture2D" uid="uid://cuighd5x1caqj" path="res://sprites/attackB/attack_0006.png" id="7_ljswh"]
 [ext_resource type="Texture2D" uid="uid://bau5uv7086f4k" path="res://sprites/down diagonal/down_diagonal_0002.png" id="8_e1yqi"]
 [ext_resource type="Texture2D" uid="uid://dheq3rwrxowx0" path="res://sprites/down diagonal/down_diagonal_0003.png" id="9_gqtf3"]
 [ext_resource type="Texture2D" uid="uid://dic0t1mq5eugm" path="res://sprites/idle front/idle_front_0000.png" id="10_2ju4b"]
@@ -31,13 +37,36 @@
 [ext_resource type="Texture2D" uid="uid://thb5f3gwe15x" path="res://sprites/up diagonal/up_diagonal_0001.png" id="27_pv32g"]
 [ext_resource type="Texture2D" uid="uid://ck5au230014d2" path="res://sprites/up diagonal/up_diagonal_0002.png" id="28_k5jw5"]
 [ext_resource type="Texture2D" uid="uid://df0n7or8m3fxc" path="res://sprites/up diagonal/up_diagonal_0003.png" id="29_6xmhu"]
-[ext_resource type="Texture2D" uid="uid://db014dma1wvap" path="res://sprites/attackA/attack_0000.png" id="30_e2tlc"]
-[ext_resource type="Texture2D" uid="uid://bsvcmvop40487" path="res://sprites/attackA/attack_0002.png" id="31_kplpt"]
-[ext_resource type="Texture2D" uid="uid://c5yak5fuli88m" path="res://sprites/attackA/attack_0003.png" id="32_qitgq"]
-[ext_resource type="Texture2D" uid="uid://12qhdmxiylkn" path="res://sprites/attackA/attack_0005.png" id="33_j4gf0"]
+[ext_resource type="Texture2D" uid="uid://7kcgogyyhxbb" path="res://sprites/attackB/attack_0000.png" id="30_e2tlc"]
+[ext_resource type="Texture2D" uid="uid://65qnmvrmr1dg" path="res://sprites/attackB/attack_0002.png" id="31_kplpt"]
+[ext_resource type="Texture2D" uid="uid://clu30h2uifkjt" path="res://sprites/attackB/attack_0003.png" id="32_qitgq"]
+[ext_resource type="Texture2D" uid="uid://ceyvur11vtrl4" path="res://sprites/attackB/attack_0005.png" id="33_j4gf0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d0yuk"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kpc2r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xl63i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2rucu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5bwn8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ye31t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ga3ph")
+}],
+"loop": false,
+"name": &"attack_A",
+"speed": 15.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("30_e2tlc")
@@ -58,8 +87,8 @@ animations = [{
 "texture": ExtResource("7_ljswh")
 }],
 "loop": false,
-"name": &"attackA",
-"speed": 5.0
+"name": &"attack_B",
+"speed": 15.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vkbgc"]
@@ -198,8 +227,9 @@ script = ExtResource("1_vua08")
 metadata/_edit_group_ = true
 
 [node name="attackAnim" type="AnimatedSprite2D" parent="."]
+z_index = 3
 sprite_frames = SubResource("SpriteFrames_d0yuk")
-animation = &"attackA"
+animation = &"attack_A"
 offset = Vector2(20, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -212,6 +242,10 @@ shape = SubResource("CapsuleShape2D_of3dv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.7, 0.7)
+limit_left = -1999
+limit_top = -1499
+limit_right = 1999
+limit_bottom = 1499
 position_smoothing_enabled = true
 
 [node name="playerHitbox" type="Area2D" parent="."]
@@ -225,6 +259,14 @@ wait_time = 0.5
 
 [node name="dealAttackTimer" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="healthbar" type="ProgressBar" parent="."]
+modulate = Color(0.3, 1, 0.51, 1)
+offset_left = -64.0
+offset_top = 116.0
+offset_right = 69.0
+offset_bottom = 143.0
+show_percentage = false
 
 [connection signal="body_entered" from="playerHitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="playerHitbox" to="." method="_on_player_hitbox_body_exited"]

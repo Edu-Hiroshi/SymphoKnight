@@ -50,12 +50,12 @@ func _physics_process(_delta):
 	move_and_slide()
 	enemy_attack()
 	attack()
+	update_health()
 	
 	if health <= 0:
 		is_alive = false #add menu later
 		health = 0
 		print("you died")
-	
 
 func enemy_attack():
 	if enemy_in_range and enemy_attack_cooldown:
@@ -65,18 +65,28 @@ func enemy_attack():
 		print(health)
 
 func attack():
-	var dir = last_direction
-	
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("attackA"):
 		global.player_current_attack = true
 		is_attacking = true
-		
-		##right
-		#if dir.x == 1 and dir.y == 0:
-		
-		$attackAnim.play("attackA")
+		$attackAnim.play("attack_A")
 		$dealAttackTimer.start()
 			
+	elif Input.is_action_just_pressed("attackB"):
+		global.player_current_attack = true
+		is_attacking = true
+		$attackAnim.play("attack_B")
+		$dealAttackTimer.start()
+
+func update_health():
+	var healthbar = $healthbar
+	healthbar.value = health
+	
+	if health > 0:
+		healthbar.visible = true
+	else:
+		healthbar.visible = false
+		
+
 
 func _on_player_hitbox_body_entered(body):
 	if body.has_method("boss"):
