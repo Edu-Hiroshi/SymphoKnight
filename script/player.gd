@@ -50,6 +50,7 @@ func _physics_process(_delta):
 	move_and_slide()
 	enemy_attack()
 	attack()
+	update_health()
 	
 	if health <= 0:
 		is_alive = false #add menu later
@@ -75,6 +76,17 @@ func attack():
 		is_attacking = true
 		$attackAnim.play("attack_B")
 		$dealAttackTimer.start()
+
+func update_health():
+	var healthbar = $healthbar
+	healthbar.value = health
+	
+	if health > 0:
+		healthbar.visible = true
+	else:
+		healthbar.visible = false
+		
+
 
 func _on_player_hitbox_body_entered(body):
 	if body.has_method("boss"):

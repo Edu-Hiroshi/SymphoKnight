@@ -260,6 +260,14 @@ wait_time = 0.5
 [node name="dealAttackTimer" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="healthbar" type="ProgressBar" parent="."]
+modulate = Color(0.3, 1, 0.51, 1)
+offset_left = -64.0
+offset_top = 116.0
+offset_right = 69.0
+offset_bottom = 143.0
+show_percentage = false
+
 [connection signal="body_entered" from="playerHitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="playerHitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="attackCooldown" to="." method="_on_attack_cooldown_timeout"]
