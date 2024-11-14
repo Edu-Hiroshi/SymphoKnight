@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://blihobusbk2rh"
-path="res://.godot/imported/down_0002.png-5b050612ad3f1853bef61707c8c7d748.ctex"
+path="res://.godot/imported/down_0002.png-096b3cdb557ef437491729a6188ed2ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/down/down_0002.png"
-dest_files=["res://.godot/imported/down_0002.png-5b050612ad3f1853bef61707c8c7d748.ctex"]
+source_file="res://Sprites/down/down_0002.png"
+dest_files=["res://.godot/imported/down_0002.png-096b3cdb557ef437491729a6188ed2ff.ctex"]
 
 [params]
 
