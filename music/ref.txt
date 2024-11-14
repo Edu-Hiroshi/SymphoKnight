@@ -1,3 +1,106 @@
 https://www.youtube.com/watch?v=_FRiPPbJsFQ
 
 https://github.com/LegionGames/Conductor-Example/
+
+
+python script for getting beat times:
+	# import librosa
+# import IPython.display as ipd
+
+# # read audio file
+# x, sr = librosa.load('tuba knight boss theme_cut_for_loop.mp3')
+# ipd.Audio(x, rate=sr)
+
+# # approach 1 - onset detection and dynamic programming
+# tempo, beat_times = librosa.beat.beat_track(y=x,
+#                                             sr=sr,
+#                                             start_bpm=60,
+#                                             units='time')
+# clicks = librosa.clicks(times=beat_times, sr=sr, length=len(x))
+# ipd.Audio(x + clicks, rate=sr)
+
+
+import librosa
+
+audio_file = librosa.load('tuba knight boss theme_cut_for_loop.mp3')
+y, sr = audio_file
+
+tempo, beat_frames = librosa.beat.beat_track(y=y, sr=sr)
+print(f'Estimated tempo: {tempo} beats per minute')
+
+beat_times = librosa.frames_to_time(beat_frames, sr=sr)
+print(beat_times)
+
+
+
+
+
+
+
+
+
+
+script for plotting differnces:
+	import matplotlib.pyplot as plt
+import numpy as np
+
+# Define the beat times list
+beat_times =[0.06965986,0.60371882,1.13777778,1.67183673,2.20589569,2.7631746
+,3.29723356,3.87773243,4.41179138,4.94585034,5.4799093,6.03718821
+,6.57124717,7.12852608,7.68580499,8.26630385,8.77714286,9.33442177
+,9.86848073,10.40253968,10.95981859,11.51709751,12.05115646,12.58521542
+,13.14249433,13.67655329,14.21061224,14.76789116,15.30195011,15.85922902
+,16.39328798,16.92734694,17.48462585,18.01868481,18.57596372,19.11002268
+,19.66730159,20.20136054,20.75863946,21.29269841,21.84997732,22.38403628
+,22.94131519,23.47537415,24.03265306,24.56671202,25.12399093,25.65804989
+,26.2153288,26.74938776,27.30666667,27.84072562,28.39800454,28.93206349]
+
+# Calculate the differences between consecutive beats
+differences = np.diff(beat_times)
+
+# Create a figure and axis object
+fig, ax = plt.subplots(figsize=(10, 6))
+
+# Plot the beat times
+ax.plot(beat_times[:-1], color='blue', label='Beat Times')
+
+# Plot the differences
+ax.bar(range(len(differences)), differences, width=0.05, color='red', alpha=0.5, label='Differences')
+
+# Customize the plot
+ax.set_title('Beat Times vs Differences Between Beats')
+ax.set_xlabel('Beat Index')
+ax.set_ylabel('Time/Difference')
+ax.legend()
+
+# Rotate x-axis labels for better readability
+plt.xticks(rotation=45)
+
+# Display the plot
+plt.tight_layout()
+plt.show()
+
+
+
+
+
+
+
+
+
+script for discovering deltas:
+import numpy as np
+
+# Define the beat times list
+beat_times = [0.06965986, 0.60371882, 1.13777778, 1.67183673, 2.20589569, 2.7631746]
+
+# Calculate the differences between consecutive beats
+deltas = np.diff(beat_times)
+
+# Print the result
+print("Differences between consecutive beats:")
+for i, delta in enumerate(deltas):
+	print(f"Beat {i+1} to Beat {i+2}: {delta}")
+
+# Optionally, return the deltas instead of printing them
+# deltas_list = deltas.tolist()

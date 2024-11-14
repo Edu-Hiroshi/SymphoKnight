@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgt2m8qkkh51f"]
+
+[ext_resource type="Script" path="res://scenes/jumper.gd" id="1_0oplj"]
+[ext_resource type="AudioStream" uid="uid://bsm2prdx34rot" path="res://music/tuba knight boss theme_cut_for_loop.mp3" id="1_jaidw"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("1_0oplj")
+
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
+offset_left = 526.0
+offset_top = 293.0
+offset_right = 566.0
+offset_bottom = 333.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="Node2D"]
+position = Vector2(526, 293)
+stream = ExtResource("1_jaidw")
+volume_db = -13.867
+autoplay = true
+
+[node name="StartTimer" type="Timer" parent="Node2D/AudioStreamPlayer"]
