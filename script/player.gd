@@ -60,7 +60,7 @@ func _physics_process(_delta):
 
 func enemy_attack():
 	if enemy_in_range and enemy_attack_cooldown:
-		health = health - 10
+		health = health - 5
 		enemy_attack_cooldown = false
 		$attackCooldown.start()
 		print(health)
