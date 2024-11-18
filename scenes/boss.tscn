@@ -1,17 +1,75 @@
-[gd_scene load_steps=7 format=3 uid="uid://dmvpxtfxtrd8r"]
+[gd_scene load_steps=19 format=3 uid="uid://dmvpxtfxtrd8r"]
 
 [ext_resource type="Script" path="res://script/boss.gd" id="1_l4a3e"]
-[ext_resource type="Texture2D" uid="uid://cojuopwnn6f7x" path="res://sprites/TubaKnight.png" id="2_4wsvy"]
+[ext_resource type="Texture2D" uid="uid://2fwyswl3o8f5" path="res://sprites/bossAttack/bossAttack_0000.png" id="2_slyta"]
+[ext_resource type="Texture2D" uid="uid://cqpqtd2aafko" path="res://sprites/bossAttack/bossAttack_0001.png" id="3_5yle1"]
+[ext_resource type="Texture2D" uid="uid://bcoxnyej1xhjc" path="res://sprites/bossAttack/bossAttack_0002.png" id="4_obnab"]
+[ext_resource type="Texture2D" uid="uid://c6dhyqpvghv5k" path="res://sprites/bossAttack/bossAttack_0003.png" id="5_t6jk7"]
+[ext_resource type="Texture2D" uid="uid://ms0erc2464dv" path="res://sprites/bossAttack/bossAttack_0004.png" id="6_2xpsv"]
+[ext_resource type="Texture2D" uid="uid://bpawexsixvxvg" path="res://sprites/bossIdle/bossIdle_0000.png" id="7_cu622"]
+[ext_resource type="Texture2D" uid="uid://b1roun28ny5mv" path="res://sprites/bossIdle/bossIdle_0001.png" id="8_kapbn"]
+[ext_resource type="Texture2D" uid="uid://cwbu3vbw05i3k" path="res://sprites/bossIdle/bossIdle_0002.png" id="9_dxwr7"]
+[ext_resource type="Texture2D" uid="uid://dad3vbaj87his" path="res://sprites/bossIdle/bossIdle_0003.png" id="10_833ng"]
+[ext_resource type="Texture2D" uid="uid://ntj47f78v3nf" path="res://sprites/bossWalk/bossWalk_0000.png" id="11_wsgc3"]
+[ext_resource type="Texture2D" uid="uid://ovet164rlmw" path="res://sprites/bossWalk/bossWalk_0001.png" id="12_kbw7p"]
+[ext_resource type="Texture2D" uid="uid://c2mp4ge1xss3s" path="res://sprites/bossWalk/bossWalk_0002.png" id="13_ddack"]
+[ext_resource type="Texture2D" uid="uid://dtc5dtvetao6w" path="res://sprites/bossWalk/bossWalk_0003.png" id="14_p67b2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_paof4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_4wsvy")
+"texture": ExtResource("2_slyta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5yle1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_obnab")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_t6jk7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2xpsv")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_cu622")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kapbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_dxwr7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_833ng")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_wsgc3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_kbw7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ddack")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_p67b2")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 4.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sjbiq"]
@@ -30,6 +88,8 @@ script = ExtResource("1_l4a3e")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_paof4")
 animation = &"idle"
+frame = 1
+frame_progress = 0.900548
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(58, 16)
