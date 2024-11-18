@@ -260,6 +260,12 @@ wait_time = 0.5
 [node name="dealAttackTimer" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="dodgeTimer" type="Timer" parent="."]
+wait_time = 0.25
+
+[node name="dodgeCooldown" type="Timer" parent="."]
+wait_time = 0.5
+
 [node name="healthbar" type="ProgressBar" parent="."]
 modulate = Color(0.3, 1, 0.51, 1)
 offset_left = -64.0
@@ -272,3 +278,5 @@ show_percentage = false
 [connection signal="body_exited" from="playerHitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="attackCooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="dealAttackTimer" to="." method="_on_deal_attack_timer_timeout"]
+[connection signal="timeout" from="dodgeTimer" to="." method="_on_dodge_timer_timeout"]
+[connection signal="timeout" from="dodgeCooldown" to="." method="_on_dodge_cooldown_timeout"]
