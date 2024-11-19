@@ -6,16 +6,20 @@ var enemy_in_range = false
 var enemy_attack_cooldown = true
 var health = 100
 var is_alive = true
-var is_attacking = false
+var is_dodging = false
+var dodge_cooldown = false
 
-func get_input():
+func move():
 	var input_direction = Input.get_vector("left", "right", "up", "down")	
 	velocity = input_direction * speed
+	
+	if is_dodging:
+		velocity = velocity * 3
 	
 	if input_direction != Vector2.ZERO:
 		last_direction = input_direction
 	
-	# horizon$maestroAnimtal movement
+	# horizontal movement
 	if velocity.x != 0 and velocity.y == 0:
 		$AnimatedSprite2D.play("side")
 		$AnimatedSprite2D.flip_h = velocity.x < 0
@@ -42,38 +46,29 @@ func get_input():
 			$AnimatedSprite2D.play("idle_up")
 		$AnimatedSprite2D.flip_h = true if last_direction.x != 1 else false 
 
-func player():
-	pass
-	
-func _physics_process(_delta):
-	get_input()
-	move_and_slide()
-	enemy_attack()
-	attack()
-	update_health()
-	
-	if health <= 0:
-		is_alive = false #add menu later
-		health = 0
-		print("you died")
-
 func enemy_attack():
 	if enemy_in_range and enemy_attack_cooldown:
-		health = health - 1
+		health = health - 5
 		enemy_attack_cooldown = false
 		$attackCooldown.start()
 		print(health)
 
+func dodge():
+	if Input.is_action_just_pressed("dodge") and !dodge_cooldown and !global.player_current_attack:
+		is_dodging = true
+		dodge_cooldown = true
+		$playerHitbox/CollisionShape2D.disabled = true
+		$dodgeTimer.start()
+		$dodgeCooldown.start()
+
 func attack():
-	if Input.is_action_just_pressed("attackA"):
+	if Input.is_action_just_pressed("attackA") and !is_dodging:
 		global.player_current_attack = true
-		is_attacking = true
 		$attackAnim.play("attack_A")
 		$dealAttackTimer.start()
 			
-	elif Input.is_action_just_pressed("attackB"):
+	elif Input.is_action_just_pressed("attackB") and !is_dodging:
 		global.player_current_attack = true
-		is_attacking = true
 		$attackAnim.play("attack_B")
 		$dealAttackTimer.start()
 
@@ -86,6 +81,21 @@ func update_health():
 	else:
 		healthbar.visible = false
 		
+func player():
+	pass
+	
+func _physics_process(_delta):
+	move()
+	dodge()
+	move_and_slide()
+	enemy_attack()
+	attack()
+	update_health()
+	
+	if health <= 0:
+		is_alive = false #add menu later
+		health = 0
+		get_tree().change_scene_to_file("res://scenes/gameover.tscn")
 
 
 func _on_player_hitbox_body_entered(body):
@@ -96,9 +106,18 @@ func _on_player_hitbox_body_exited(body):
 	if body.has_method("boss"):
 		enemy_in_range = false
 
+
 func _on_attack_cooldown_timeout() -> void:
 	enemy_attack_cooldown = true
 
 func _on_deal_attack_timer_timeout() -> void:
 	$dealAttackTimer.stop()
 	global.player_current_attack = false
+
+
+func _on_dodge_timer_timeout() -> void:
+	$playerHitbox/CollisionShape2D.disabled = false
+	is_dodging = false
+
+func _on_dodge_cooldown_timeout() -> void:
+	dodge_cooldown = false
