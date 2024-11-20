@@ -1,13 +1,28 @@
 extends CharacterBody2D
 
 @export var speed = 500
+var health = 100
+var damage = 5
+
 var last_direction = Vector2.ZERO
 var enemy_in_range = false
 var enemy_attack_cooldown = true
-var health = 100
 var is_alive = true
 var is_dodging = false
 var dodge_cooldown = false
+
+func _physics_process(_delta):
+	move()
+	dodge()
+	move_and_slide()
+	enemy_attack()
+	attack()
+	update_healthbar()
+	
+	if health <= 0:
+		is_alive = false #add menu later
+		health = 0
+		get_tree().change_scene_to_file("res://scenes/gameover.tscn")
 
 func move():
 	var input_direction = Input.get_vector("left", "right", "up", "down")	
@@ -48,10 +63,9 @@ func move():
 
 func enemy_attack():
 	if enemy_in_range and enemy_attack_cooldown:
-		health = health - 5
+		health -= damage
 		enemy_attack_cooldown = false
 		$attackCooldown.start()
-		print(health)
 
 func dodge():
 	if Input.is_action_just_pressed("dodge") and !dodge_cooldown and !global.player_current_attack:
@@ -72,7 +86,7 @@ func attack():
 		$attackAnim.play("attack_B")
 		$dealAttackTimer.start()
 
-func update_health():
+func update_healthbar():
 	var healthbar = $healthbar
 	healthbar.value = health
 	
@@ -83,20 +97,6 @@ func update_health():
 		
 func player():
 	pass
-	
-func _physics_process(_delta):
-	move()
-	dodge()
-	move_and_slide()
-	enemy_attack()
-	attack()
-	update_health()
-	
-	if health <= 0:
-		is_alive = false #add menu later
-		health = 0
-		get_tree().change_scene_to_file("res://scenes/gameover.tscn")
-
 
 func _on_player_hitbox_body_entered(body):
 	if body.has_method("boss"):
