@@ -5,13 +5,12 @@ var health = 100
 var damage = 20
 
 var can_be_damaged = true
-var dead = false
 var player_in_area = false
 var player_in_range = false
 var player
 
 func _ready():
-	dead = false
+	global.boss_dead = false
 
 func _physics_process(delta):
 	deal_with_damage()
@@ -19,7 +18,7 @@ func _physics_process(delta):
 	pursuit()
 	
 func pursuit():
-	if !dead:
+	if !global.boss_dead:
 		$detection_area/CollisionShape2D.disabled = false
 		if player_in_area:
 			position += (player.position - position)/speed
@@ -37,12 +36,11 @@ func deal_with_damage():
 			can_be_damaged = false
 			health -= damage
 			
-			if health <= 0 and !dead:
+			if health <= 0 and !global.boss_dead:
 				death()
 
 func death():
-	dead = true
-	print("entered death")
+	global.boss_dead = true
 	$AnimatedSprite2D.play("death")
 	$AnimatedSprite2D.flip_h = (player.position.x - position.x) > 0
 	$deathAnim.start()

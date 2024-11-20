@@ -241,12 +241,11 @@ position = Vector2(0, 20)
 shape = SubResource("CapsuleShape2D_of3dv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.7, 0.7)
+zoom = Vector2(0.65, 0.65)
 limit_left = -1999
 limit_top = -1499
 limit_right = 1999
 limit_bottom = 1499
-position_smoothing_enabled = true
 
 [node name="playerHitbox" type="Area2D" parent="."]
 

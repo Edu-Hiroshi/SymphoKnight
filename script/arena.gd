@@ -1,7 +1,17 @@
 extends Node2D
 
-#func game_over():
-	#pass
-#
-#func new_game():
-	#$Player.start($startPosition.position)
+var gambiarra = true
+
+func _process(_delta):
+	if gambiarra:
+		$player/victoryText.visible = false
+	victory_check()
+
+func victory_check():
+	if global.boss_dead and gambiarra:
+		gambiarra = false
+		$victoryTimer.start()
+		$player/victoryText.visible = true
+
+func _on_victory_timer_timeout() -> void:
+	get_tree().change_scene_to_file("res://scenes/endscreen.tscn")
