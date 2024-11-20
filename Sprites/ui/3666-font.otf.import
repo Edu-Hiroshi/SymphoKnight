@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://ck6k1bx8p2g4r"
-path="res://.godot/imported/3666-font.otf-b601ccba47c8ae0d7c64e366c0478e66.fontdata"
+path="res://.godot/imported/3666-font.otf-3f0349dd39dad1d5279656d075a5299c.fontdata"
 
 [deps]
 
-source_file="res://sprites/ui/3666-font.otf"
-dest_files=["res://.godot/imported/3666-font.otf-b601ccba47c8ae0d7c64e366c0478e66.fontdata"]
+source_file="res://Sprites/ui/3666-font.otf"
+dest_files=["res://.godot/imported/3666-font.otf-3f0349dd39dad1d5279656d075a5299c.fontdata"]
 
 [params]
 
