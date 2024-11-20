@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://03yhpo32b0e4"
-path="res://.godot/imported/button-start.png-3b8225b4b0ccd9005846195fe5d6c047.ctex"
+uid="uid://m6xadvgmb4hr"
+path="res://.godot/imported/bossDeath_0006.png-53f98e11b432074d286095006fad885a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/ui/button-start.png"
-dest_files=["res://.godot/imported/button-start.png-3b8225b4b0ccd9005846195fe5d6c047.ctex"]
+source_file="res://sprites/bossDeath/bossDeath_0006.png"
+dest_files=["res://.godot/imported/bossDeath_0006.png-53f98e11b432074d286095006fad885a.ctex"]
 
 [params]
 
