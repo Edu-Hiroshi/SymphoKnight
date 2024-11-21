@@ -85,6 +85,11 @@ func attack():
 		global.player_current_attack = true
 		$attackAnim.play("attack_B")
 		$dealAttackTimer.start()
+	
+	elif Input.is_action_just_pressed("attackC") and !is_dodging:
+		global.player_current_attack = true
+		$attackAnim.play("attack_C")
+		$dealAttackTimer.start()
 
 func update_healthbar():
 	var healthbar = $healthbar
