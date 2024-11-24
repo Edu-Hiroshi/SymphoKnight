@@ -66,15 +66,17 @@ func move():
 		$AnimatedSprite2D.flip_h = true if last_direction.x != 1 else false 
 
 func damaging():
-	if global.boss_attack_type == global.player_attack_type and global.player_current_attack and global.boss_current_attack:
+	if global.boss_attack_type == global.player_attack_type and global.player_current_attack and \
+	   global.boss_current_attack and enemy_attack_cooldown:
 		health += heal
+		enemy_attack_cooldown = false
+		$bossAttackCooldown.start()
 	
 	elif global.boss_current_attack and enemy_attack_cooldown and enemy_in_attack_range:
 		health -= boss_attack_damage
 		enemy_attack_cooldown = false
 		$bossAttackCooldown.start()
 		
-
 	if enemy_contact and enemy_contact_cooldown:
 		health -= contact_damage
 		enemy_contact_cooldown = false
@@ -89,19 +91,19 @@ func dodge():
 		$dodgeCooldown.start()
 
 func attack():
-	if Input.is_action_just_pressed("attackR") and !is_dodging:
+	if Input.is_action_just_pressed("attackR") and !is_dodging and !global.player_current_attack:
 		global.player_current_attack = true
 		global.player_attack_type = Color(1, 0, 0)
 		$attackAnim.play("attackR")
 		$dealAttackTimer.start()
 			
-	elif Input.is_action_just_pressed("attackB") and !is_dodging:
+	elif Input.is_action_just_pressed("attackB") and !is_dodging and !global.player_current_attack:
 		global.player_current_attack = true
 		global.player_attack_type = Color(0, 0, 1)
 		$attackAnim.play("attackB")
 		$dealAttackTimer.start()
 	
-	elif Input.is_action_just_pressed("attackG") and !is_dodging:
+	elif Input.is_action_just_pressed("attackG") and !is_dodging and !global.player_current_attack:
 		global.player_current_attack = true
 		global.player_attack_type = Color(0, 1, 0)
 		$attackAnim.play("attackG")
@@ -133,7 +135,7 @@ func _on_contact_cooldown_timeout() -> void:
 
 # player currently attacking
 func _on_deal_attack_timer_timeout() -> void:
-	$dealAttackTimer.stop()
+	#$dealAttackTimer.stop()
 	global.player_current_attack = false
 
 # dodge timers
