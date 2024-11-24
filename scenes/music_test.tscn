@@ -18,8 +18,12 @@ offset_bottom = 10.0
 stream = ExtResource("1_jaidw")
 autoplay = true
 
+[node name="whiteTimer" type="Timer" parent="Node2D"]
+wait_time = 0.4
+
 [node name="beatTimer" type="Timer" parent="Node2D"]
 wait_time = 0.5
 
 [connection signal="finished" from="Node2D/AudioStreamPlayer" to="Node2D" method="_on_audio_stream_player_finished"]
+[connection signal="timeout" from="Node2D/whiteTimer" to="Node2D" method="_on_white_timer_timeout"]
 [connection signal="timeout" from="Node2D/beatTimer" to="Node2D" method="_on_beat_timer_timeout"]

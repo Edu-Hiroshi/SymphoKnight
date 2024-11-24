@@ -1,9 +1,15 @@
 extends Node2D
 
 # List of beat times in seconds
-var beat_times = [0.150, 1.011, 2.405, 3.276, 4.496, 5.437, 6.657, 7.668, 8.819, 9.725, 11.014,
-12.060, 13.190, 14.200, 15.406, 16.278, 17.463, 18.500, 34.960, 35.760, 37.160, 38.000, 39.320,
-40.120, 41.520, 42.360, 43.680, 44.480, 45.840, 46.680, 48.040, 48.440, 50.240, 51.080]
+var beat_times = [ 0.150,  1.011,  2.405,  3.276,
+				   4.496,  5.437,  6.657,  7.668,
+				   8.819,  9.725, 11.014, 12.060,
+				  13.190, 14.200, 15.406, 16.278, 17.463,
+				  18.500,
+				  34.960, 35.760, 37.160, 38.000, 39.320, 40.120,
+				  41.520, 42.360, 43.680, 44.480, 45.840, 46.680,
+				  48.040, 48.440, 50.240, 51.080,
+				  52.500]
 
 var current_beat_index = 0
 var tolerance = 0.05  # Buffer to account for small timing mismatches
@@ -13,8 +19,15 @@ var r = Color(1, 0, 0)
 var g = Color(0, 1, 0)
 var b = Color(0, 0, 1)
 var w = Color(1, 1, 1)
-var beat_colors = [r, g, b, r, g, b, r, g, b, r, g, b, r, g, b, r, g, w,
-b, r, r, g, b, r, g, b, r, g, b, r, g, b, r, g]
+var beat_colors = [r, b, r, g,
+				   r, b, r, g,
+				   r, b, g, g, 
+				   r, g, b, b, g,
+				   w,
+				   b, r, r, g, b, r,
+				   g, b, r, r, b, g,
+				   r, b, g, r,
+				   w]
 
 @onready var song = $AudioStreamPlayer
 @onready var color_rect = $ColorRect
@@ -40,6 +53,7 @@ func _process(_delta):
 func change_color():
 	color_rect.color = beat_colors[current_beat_index] # Set to color
 	global.boss_attack_type = beat_colors[current_beat_index]
+	$whiteTimer.start()
 	
 	#if is_white:
 		#color_rect.color = beat_colors[current_beat_index] # Set to color
@@ -59,3 +73,7 @@ func _on_audio_stream_player_finished():
 func _on_beat_timer_timeout() -> void:
 	global.boss_on_beat = false
 	global.boss_current_attack = false
+
+
+func _on_white_timer_timeout() -> void:
+	color_rect.color = Color(1, 1, 1) 
