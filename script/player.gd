@@ -2,10 +2,14 @@ extends CharacterBody2D
 
 @export var speed = 500
 var health = 100
-var damage = 5
+var contact_damage = 1
+var boss_attack_damage = 5
+var heal = 5
 
 var last_direction = Vector2.ZERO
-var enemy_in_range = false
+var enemy_contact = false
+var enemy_in_attack_range = false
+var enemy_contact_cooldown = true
 var enemy_attack_cooldown = true
 var is_alive = true
 var is_dodging = false
@@ -15,7 +19,7 @@ func _physics_process(_delta):
 	move()
 	dodge()
 	move_and_slide()
-	enemy_attack()
+	damaging()
 	attack()
 	update_healthbar()
 	
@@ -61,11 +65,20 @@ func move():
 			$AnimatedSprite2D.play("idle_up")
 		$AnimatedSprite2D.flip_h = true if last_direction.x != 1 else false 
 
-func enemy_attack():
-	if enemy_in_range and enemy_attack_cooldown:
-		health -= damage
+func damaging():
+	if global.boss_attack_type == global.player_attack_type and global.player_current_attack and global.boss_current_attack:
+		health += heal
+	
+	elif global.boss_current_attack and enemy_attack_cooldown and enemy_in_attack_range:
+		health -= boss_attack_damage
 		enemy_attack_cooldown = false
-		$attackCooldown.start()
+		$bossAttackCooldown.start()
+		
+
+	if enemy_contact and enemy_contact_cooldown:
+		health -= contact_damage
+		enemy_contact_cooldown = false
+		$contactCooldown.start()
 
 func dodge():
 	if Input.is_action_just_pressed("dodge") and !dodge_cooldown and !global.player_current_attack:
@@ -76,19 +89,22 @@ func dodge():
 		$dodgeCooldown.start()
 
 func attack():
-	if Input.is_action_just_pressed("attackA") and !is_dodging:
+	if Input.is_action_just_pressed("attackR") and !is_dodging:
 		global.player_current_attack = true
-		$attackAnim.play("attack_A")
+		global.player_attack_type = Color(1, 0, 0)
+		$attackAnim.play("attackR")
 		$dealAttackTimer.start()
 			
 	elif Input.is_action_just_pressed("attackB") and !is_dodging:
 		global.player_current_attack = true
-		$attackAnim.play("attack_B")
+		global.player_attack_type = Color(0, 0, 1)
+		$attackAnim.play("attackB")
 		$dealAttackTimer.start()
 	
-	elif Input.is_action_just_pressed("attackC") and !is_dodging:
+	elif Input.is_action_just_pressed("attackG") and !is_dodging:
 		global.player_current_attack = true
-		$attackAnim.play("attack_C")
+		global.player_attack_type = Color(0, 1, 0)
+		$attackAnim.play("attackG")
 		$dealAttackTimer.start()
 
 func update_healthbar():
@@ -103,26 +119,38 @@ func update_healthbar():
 func player():
 	pass
 
+# enemy contact damage
 func _on_player_hitbox_body_entered(body):
 	if body.has_method("boss"):
-		enemy_in_range = true
+		enemy_contact = true
 
 func _on_player_hitbox_body_exited(body):
 	if body.has_method("boss"):
-		enemy_in_range = false
+		enemy_contact = false
 
+func _on_contact_cooldown_timeout() -> void:
+	enemy_contact_cooldown = true
 
-func _on_attack_cooldown_timeout() -> void:
-	enemy_attack_cooldown = true
-
+# player currently attacking
 func _on_deal_attack_timer_timeout() -> void:
 	$dealAttackTimer.stop()
 	global.player_current_attack = false
 
-
+# dodge timers
 func _on_dodge_timer_timeout() -> void:
 	$playerHitbox/CollisionShape2D.disabled = false
 	is_dodging = false
 
 func _on_dodge_cooldown_timeout() -> void:
 	dodge_cooldown = false
+
+func _on_boss_attack_cooldown_timeout() -> void:
+	enemy_attack_cooldown = true
+
+func _on_player_attack_hitbox_area_entered(area: Area2D) -> void:
+	if "attack_range" in area.name:
+		enemy_in_attack_range = true
+
+func _on_player_attack_hitbox_area_exited(area: Area2D) -> void:
+	if "attack_range" in area.name:
+		enemy_in_attack_range = false

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dheq3rwrxowx0"
-path="res://.godot/imported/down_diagonal_0003.png-1c67457fc2f07c3773baa1ea732fee07.ctex"
+path="res://.godot/imported/down_diagonal_0003.png-426ccb74c97e8d123e2deb2d32e26f35.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/down diagonal/down_diagonal_0003.png"
-dest_files=["res://.godot/imported/down_diagonal_0003.png-1c67457fc2f07c3773baa1ea732fee07.ctex"]
+source_file="res://sprites/down diagonal/down_diagonal_0003.png"
+dest_files=["res://.godot/imported/down_diagonal_0003.png-426ccb74c97e8d123e2deb2d32e26f35.ctex"]
 
 [params]
 

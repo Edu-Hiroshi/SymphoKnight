@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://dmvpxtfxtrd8r"]
+[gd_scene load_steps=95 format=3 uid="uid://dmvpxtfxtrd8r"]
 
 [ext_resource type="Script" path="res://script/boss.gd" id="1_l4a3e"]
 [ext_resource type="Texture2D" uid="uid://b6dcwodo3kfck" path="res://sprites/bossEffectA/attackC_00012 (1).png" id="2_mah3n"]
@@ -73,56 +73,24 @@
 [ext_resource type="Texture2D" uid="uid://chywft6078mm8" path="res://sprites/bossEffectC/effectC_0012.png" id="42_0pm3d"]
 [ext_resource type="Texture2D" uid="uid://5jsrvd02uxml" path="res://sprites/bossEffectC/effectC_0013.png" id="43_8jfur"]
 [ext_resource type="Texture2D" uid="uid://duc10ca81sbtc" path="res://sprites/bossEffectC/effectC_0014.png" id="44_kh2if"]
+[ext_resource type="Texture2D" uid="uid://ohemeksb5vhd" path="res://sprites/bossAttackC/bossAttackC_0000.png" id="50_ew24d"]
+[ext_resource type="Texture2D" uid="uid://b68w3018yo87r" path="res://sprites/bossAttackC/bossAttackC_0001.png" id="51_n536m"]
+[ext_resource type="Texture2D" uid="uid://cbla4nk3lvpsd" path="res://sprites/bossAttackC/bossAttackC_0002.png" id="52_f6rcx"]
+[ext_resource type="Texture2D" uid="uid://gf3yyjegoeci" path="res://sprites/bossAttackC/bossAttackC_0003.png" id="53_m7e4n"]
+[ext_resource type="Texture2D" uid="uid://bs3drprf7dwik" path="res://sprites/bossAttackC/bossAttackC_0004.png" id="54_w7xtt"]
+[ext_resource type="Texture2D" uid="uid://dc72epwigne50" path="res://sprites/bossAttackC/bossAttackC_0005.png" id="55_5flib"]
+[ext_resource type="Texture2D" uid="uid://djvpuqewfr6iw" path="res://sprites/bossAttackC/bossAttackC_0006.png" id="56_uuj3j"]
+[ext_resource type="Texture2D" uid="uid://buqxu8blcllti" path="res://sprites/bossAttackC/bossAttackC_0007.png" id="57_hmk5j"]
+[ext_resource type="Texture2D" uid="uid://by0kjfnku6vw1" path="res://sprites/bossAttackC/bossAttackC_0008.png" id="58_7tneg"]
+[ext_resource type="Texture2D" uid="uid://do3qpdrj3qygp" path="res://sprites/bossAttackC/bossAttackC_0009.png" id="59_kmexf"]
+[ext_resource type="Texture2D" uid="uid://bo7ahfy453rd7" path="res://sprites/bossAttackC/bossAttackC_0010.png" id="60_3nxbf"]
+[ext_resource type="Texture2D" uid="uid://fclrhnci5qm6" path="res://sprites/bossAttackC/bossAttackC_0011.png" id="61_pxb5x"]
+[ext_resource type="Texture2D" uid="uid://7v3n0ivih1jl" path="res://sprites/bossAttackC/bossAttackC_0012.png" id="62_urnbd"]
+[ext_resource type="Texture2D" uid="uid://cgubvi5jt8pkx" path="res://sprites/bossAttackC/bossAttackC_0013.png" id="63_wl7ka"]
+[ext_resource type="Texture2D" uid="uid://c7i5m17qj3u8w" path="res://sprites/bossAttackC/bossAttackC_0014.png" id="64_38tye"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aqqax"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_mah3n")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_h6wy1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_fwom3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_ckplq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_whco5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_ru0st")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_sk03j")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_7u2th")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_hsgoq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_j7drv")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_0cj10")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_rmxh7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_4p7le")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_pl3eo")
-}],
-"loop": false,
-"name": &"effect_A",
-"speed": 30.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("16_njfro")
@@ -167,7 +135,7 @@ animations = [{
 "texture": ExtResource("29_n1xg1")
 }],
 "loop": false,
-"name": &"effect_B",
+"name": &"effectB",
 "speed": 30.0
 }, {
 "frames": [{
@@ -217,7 +185,54 @@ animations = [{
 "texture": ExtResource("44_kh2if")
 }],
 "loop": false,
-"name": &"effect_C",
+"name": &"effectG",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mah3n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_h6wy1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fwom3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ckplq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_whco5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ru0st")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_sk03j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7u2th")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_hsgoq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_j7drv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_0cj10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_rmxh7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_4p7le")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_pl3eo")
+}],
+"loop": false,
+"name": &"effectR",
 "speed": 30.0
 }]
 
@@ -240,8 +255,58 @@ animations = [{
 "texture": ExtResource("6_2xpsv")
 }],
 "loop": false,
-"name": &"attackA",
-"speed": 5.0
+"name": &"attackB",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("50_ew24d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_n536m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_f6rcx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_m7e4n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_w7xtt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_5flib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_uuj3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_hmk5j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_7tneg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_kmexf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_3nxbf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_pxb5x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_urnbd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_wl7ka")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_38tye")
+}],
+"loop": false,
+"name": &"attackG",
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -260,8 +325,8 @@ animations = [{
 "texture": ExtResource("6_2xpsv")
 }],
 "loop": false,
-"name": &"attackB",
-"speed": 5.0
+"name": &"attackR",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -352,7 +417,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sjbiq"]
-size = Vector2(206, 268)
+size = Vector2(206, 207)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqlwl"]
 size = Vector2(274, 340)
@@ -361,21 +426,21 @@ size = Vector2(274, 340)
 radius = 852.0
 height = 1704.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1icgn"]
+
 [node name="boss" type="CharacterBody2D"]
 script = ExtResource("1_l4a3e")
 
 [node name="AttackAnim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_aqqax")
-animation = &"effect_C"
+animation = &"effectG"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_paof4")
-animation = &"death"
-frame = 15
-frame_progress = 1.0
+animation = &"attackB"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(58, 16)
+position = Vector2(58, 46.5)
 shape = SubResource("RectangleShape2D_sjbiq")
 
 [node name="hitbox" type="Area2D" parent="."]
@@ -391,24 +456,34 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
 shape = SubResource("CapsuleShape2D_rdwv3")
 
+[node name="attack_range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_range"]
+scale = Vector2(45, 30)
+shape = SubResource("CircleShape2D_1icgn")
+
 [node name="takeDamage" type="Timer" parent="."]
 wait_time = 0.5
 
 [node name="deathAnim" type="Timer" parent="."]
 one_shot = true
 
+[node name="attackCooldown" type="Timer" parent="."]
+wait_time = 0.5
+
 [node name="healthbar" type="ProgressBar" parent="."]
-modulate = Color(1, 0.32, 0.478666, 1)
-offset_left = -81.0
+offset_left = -150.0
 offset_top = 220.0
-offset_right = 198.0
-offset_bottom = 247.0
+offset_right = 150.0
+offset_bottom = 240.0
 show_percentage = false
 
-[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="attack_range" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="attack_range" to="." method="_on_attack_range_body_exited"]
 [connection signal="timeout" from="takeDamage" to="." method="_on_take_damage_timeout"]
 [connection signal="timeout" from="deathAnim" to="." method="_on_death_anim_timeout"]
+[connection signal="timeout" from="attackCooldown" to="." method="_on_attack_cooldown_timeout"]

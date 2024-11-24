@@ -4,20 +4,22 @@
 [ext_resource type="AudioStream" uid="uid://bsm2prdx34rot" path="res://music/tuba knight boss theme_cut_for_loop.mp3" id="1_jaidw"]
 
 [node name="MusicTest" type="Node2D"]
+position = Vector2(0, 210)
 
 [node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("1_0oplj")
 
 [node name="ColorRect" type="ColorRect" parent="Node2D"]
-offset_left = 526.0
-offset_top = 293.0
-offset_right = 566.0
-offset_bottom = 333.0
+offset_left = -140.0
+offset_right = 140.0
+offset_bottom = 10.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="Node2D"]
-position = Vector2(526, 293)
 stream = ExtResource("1_jaidw")
-volume_db = -13.867
 autoplay = true
 
+[node name="beatTimer" type="Timer" parent="Node2D"]
+wait_time = 0.5
+
 [connection signal="finished" from="Node2D/AudioStreamPlayer" to="Node2D" method="_on_audio_stream_player_finished"]
+[connection signal="timeout" from="Node2D/beatTimer" to="Node2D" method="_on_beat_timer_timeout"]
