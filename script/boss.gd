@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var speed = 150
-var health = 1
+var health = 100
 var basic_damage = 1
 var match_damage = 5
 

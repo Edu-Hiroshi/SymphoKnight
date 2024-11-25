@@ -1,13 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3gv3yq6uolqj"]
+[gd_scene load_steps=16 format=3 uid="uid://b3gv3yq6uolqj"]
 
 [ext_resource type="PackedScene" uid="uid://dlt8hky73i5d4" path="res://scenes/player.tscn" id="1_01fl2"]
 [ext_resource type="Script" path="res://script/arena.gd" id="1_i2d27"]
 [ext_resource type="PackedScene" uid="uid://dmvpxtfxtrd8r" path="res://scenes/boss.tscn" id="2_ne7xt"]
 [ext_resource type="Texture2D" uid="uid://b5s6pw5ogdjm1" path="res://sprites/Background.png" id="3_2st12"]
+[ext_resource type="Texture2D" uid="uid://mjo7q5h5dghi" path="res://sprites/shadow.png" id="5_acpba"]
 [ext_resource type="FontFile" uid="uid://ck6k1bx8p2g4r" path="res://sprites/ui/3666-font.otf" id="5_m0f13"]
 [ext_resource type="AudioStream" uid="uid://de1byfc1tbunw" path="res://sfx/victory.mp3" id="6_ihhiu"]
 
-[sub_resource type="Image" id="Image_g12lw"]
+[sub_resource type="Image" id="Image_hvwrh"]
 data = {
 "data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 1, 179, 179, 179, 20, 188, 188, 188, 19, 255, 255, 255, 1, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 179, 179, 179, 20, 180, 180, 180, 64, 180, 180, 180, 64, 188, 188, 188, 19, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 188, 188, 188, 19, 180, 180, 180, 64, 180, 180, 180, 64, 188, 188, 188, 19, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 1, 188, 188, 188, 19, 188, 188, 188, 19, 255, 255, 255, 1, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
 "format": "RGBA8",
@@ -17,9 +18,9 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_6eahs"]
-image = SubResource("Image_g12lw")
+image = SubResource("Image_hvwrh")
 
-[sub_resource type="Image" id="Image_8nvcf"]
+[sub_resource type="Image" id="Image_wksdy"]
 data = {
 "data": PackedByteArray(181, 181, 181, 48, 179, 179, 179, 50, 213, 213, 213, 6, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 179, 179, 179, 50, 180, 180, 180, 64, 180, 180, 180, 54, 213, 213, 213, 6, 255, 255, 255, 0, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 204, 204, 204, 5, 178, 178, 178, 53, 180, 180, 180, 64, 180, 180, 180, 54, 213, 213, 213, 6, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 255, 255, 255, 0, 204, 204, 204, 5, 182, 182, 182, 52, 180, 180, 180, 64, 180, 180, 180, 51, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 255, 255, 255, 0, 213, 213, 213, 6, 180, 180, 180, 54, 180, 180, 180, 64, 179, 179, 179, 50, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 213, 213, 213, 6, 180, 180, 180, 54, 180, 180, 180, 64, 183, 183, 183, 53, 170, 170, 170, 6, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 182, 182, 182, 49, 180, 180, 180, 64, 183, 183, 183, 53, 170, 170, 170, 6, 255, 255, 255, 0, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 181, 181, 181, 41, 182, 182, 182, 49, 170, 170, 170, 6, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64),
 "format": "RGBA8",
@@ -29,7 +30,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_e74mg"]
-image = SubResource("Image_8nvcf")
+image = SubResource("Image_wksdy")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j7xq8"]
 content_margin_left = 4.0
@@ -124,6 +125,9 @@ text = " VICTORY"
 
 [node name="boss" parent="." instance=ExtResource("2_ne7xt")]
 position = Vector2(0, -1000)
+
+[node name="Sprite2D" type="Sprite2D" parent="boss"]
+texture = ExtResource("5_acpba")
 
 [node name="background" type="Sprite2D" parent="."]
 z_index = -2
