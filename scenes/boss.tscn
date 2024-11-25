@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://dmvpxtfxtrd8r"]
+[gd_scene load_steps=100 format=3 uid="uid://dmvpxtfxtrd8r"]
 
 [ext_resource type="Script" path="res://script/boss.gd" id="1_l4a3e"]
 [ext_resource type="Texture2D" uid="uid://b6dcwodo3kfck" path="res://sprites/bossEffectA/attackC_00012 (1).png" id="2_mah3n"]
@@ -88,6 +88,11 @@
 [ext_resource type="Texture2D" uid="uid://7v3n0ivih1jl" path="res://sprites/bossAttackC/bossAttackC_0012.png" id="62_urnbd"]
 [ext_resource type="Texture2D" uid="uid://cgubvi5jt8pkx" path="res://sprites/bossAttackC/bossAttackC_0013.png" id="63_wl7ka"]
 [ext_resource type="Texture2D" uid="uid://c7i5m17qj3u8w" path="res://sprites/bossAttackC/bossAttackC_0014.png" id="64_38tye"]
+[ext_resource type="AudioStream" uid="uid://r14bi7cw6pe5" path="res://sfx/slash.mp3" id="89_w0mts"]
+[ext_resource type="AudioStream" uid="uid://846re2ojkisb" path="res://sfx/crumbling.mp3" id="90_6qv84"]
+[ext_resource type="AudioStream" uid="uid://uwhub5u2u28g" path="res://sfx/bass.mp3" id="90_hlmv7"]
+[ext_resource type="AudioStream" uid="uid://b6fo17286rsfh" path="res://sfx/bluntImpact.mp3" id="90_tuu63"]
+[ext_resource type="PackedScene" uid="uid://cgt2m8qkkh51f" path="res://scenes/music_test.tscn" id="93_73y8x"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aqqax"]
 animations = [{
@@ -379,7 +384,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"death",
-"speed": 15.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -433,11 +438,11 @@ script = ExtResource("1_l4a3e")
 
 [node name="AttackAnim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_aqqax")
-animation = &"effectG"
+animation = &"effectR"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_paof4")
-animation = &"attackB"
+animation = &"death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(58, 46.5)
@@ -466,6 +471,7 @@ shape = SubResource("CircleShape2D_1icgn")
 wait_time = 0.5
 
 [node name="deathAnim" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 
 [node name="attackCooldown" type="Timer" parent="."]
@@ -477,6 +483,30 @@ offset_top = 220.0
 offset_right = 150.0
 offset_bottom = 240.0
 show_percentage = false
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="slash" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("89_w0mts")
+volume_db = -5.0
+pitch_scale = 2.0
+
+[node name="lowdmg" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("90_tuu63")
+volume_db = -10.0
+pitch_scale = 3.0
+
+[node name="death" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("90_6qv84")
+volume_db = -15.0
+pitch_scale = 2.0
+
+[node name="bass" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("90_hlmv7")
+volume_db = -10.0
+pitch_scale = 2.5
+
+[node name="Music" parent="." instance=ExtResource("93_73y8x")]
 
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]

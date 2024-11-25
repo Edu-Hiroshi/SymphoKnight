@@ -1,10 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://b6uwnss4vfnhr"]
+[gd_scene load_steps=17 format=3 uid="uid://b6uwnss4vfnhr"]
 
 [ext_resource type="FontFile" uid="uid://ck6k1bx8p2g4r" path="res://sprites/ui/3666-font.otf" id="1_7qdva"]
 [ext_resource type="Script" path="res://script/gameover.gd" id="1_50m4r"]
 [ext_resource type="Theme" uid="uid://bx1dqvrohun4x" path="res://sprites/buttonstyle.tres" id="2_xbvhj"]
+[ext_resource type="AudioStream" uid="uid://7tncxvyj001v" path="res://sfx/select.mp3" id="4_bqx5f"]
+[ext_resource type="AudioStream" uid="uid://clvyp8v8mspy1" path="res://sfx/loss.mp3" id="5_3askr"]
 
-[sub_resource type="Image" id="Image_ckgg2"]
+[sub_resource type="Image" id="Image_s4eci"]
 data = {
 "data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 1, 179, 179, 179, 20, 188, 188, 188, 19, 255, 255, 255, 1, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 179, 179, 179, 20, 180, 180, 180, 64, 180, 180, 180, 64, 188, 188, 188, 19, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 188, 188, 188, 19, 180, 180, 180, 64, 180, 180, 180, 64, 188, 188, 188, 19, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 1, 188, 188, 188, 19, 188, 188, 188, 19, 255, 255, 255, 1, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
 "format": "RGBA8",
@@ -14,9 +16,9 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_sxdxe"]
-image = SubResource("Image_ckgg2")
+image = SubResource("Image_s4eci")
 
-[sub_resource type="Image" id="Image_axet2"]
+[sub_resource type="Image" id="Image_vyx3w"]
 data = {
 "data": PackedByteArray(181, 181, 181, 48, 179, 179, 179, 50, 213, 213, 213, 6, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 179, 179, 179, 50, 180, 180, 180, 64, 180, 180, 180, 54, 213, 213, 213, 6, 255, 255, 255, 0, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 204, 204, 204, 5, 178, 178, 178, 53, 180, 180, 180, 64, 180, 180, 180, 54, 213, 213, 213, 6, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 255, 255, 255, 0, 204, 204, 204, 5, 182, 182, 182, 52, 180, 180, 180, 64, 180, 180, 180, 51, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 255, 255, 255, 0, 213, 213, 213, 6, 180, 180, 180, 54, 180, 180, 180, 64, 179, 179, 179, 50, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 213, 213, 213, 6, 180, 180, 180, 54, 180, 180, 180, 64, 183, 183, 183, 53, 170, 170, 170, 6, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 182, 182, 182, 49, 180, 180, 180, 64, 183, 183, 183, 53, 170, 170, 170, 6, 255, 255, 255, 0, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 181, 181, 181, 41, 182, 182, 182, 49, 170, 170, 170, 6, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64),
 "format": "RGBA8",
@@ -26,7 +28,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_vvkoi"]
-image = SubResource("Image_axet2")
+image = SubResource("Image_vyx3w")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r3ajs"]
 content_margin_left = 4.0
@@ -255,5 +257,19 @@ libraries = {
 }
 autoplay = "fade_in"
 
+[node name="sfx" type="Node" parent="."]
+
+[node name="buttonHover" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("4_bqx5f")
+volume_db = -5.0
+max_polyphony = 3
+
+[node name="loss" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("5_3askr")
+volume_db = -10.0
+autoplay = true
+
+[connection signal="mouse_entered" from="VBoxContainer/tryagain" to="." method="_on_tryagain_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/tryagain" to="." method="_on_tryagain_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_quit_pressed"]

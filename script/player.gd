@@ -11,6 +11,7 @@ var enemy_contact = false
 var enemy_in_attack_range = false
 var enemy_contact_cooldown = true
 var enemy_attack_cooldown = true
+var player_in_enemy_attack = false
 var is_alive = true
 var is_dodging = false
 var dodge_cooldown = false
@@ -67,15 +68,17 @@ func move():
 
 func damaging():
 	if global.boss_attack_type == global.player_attack_type and global.player_current_attack and \
-	   global.boss_current_attack and enemy_attack_cooldown:
+	   global.boss_current_attack and enemy_attack_cooldown and enemy_in_attack_range:
 		health += heal
 		enemy_attack_cooldown = false
 		$bossAttackCooldown.start()
+		$sfx/heal.play()
 	
-	elif global.boss_current_attack and enemy_attack_cooldown and enemy_in_attack_range:
+	elif global.boss_current_attack and enemy_attack_cooldown and player_in_enemy_attack:
 		health -= boss_attack_damage
 		enemy_attack_cooldown = false
 		$bossAttackCooldown.start()
+		$sfx/damage.play()
 		
 	if enemy_contact and enemy_contact_cooldown:
 		health -= contact_damage
@@ -88,6 +91,7 @@ func dodge():
 		dodge_cooldown = true
 		$playerHitbox/CollisionShape2D.disabled = true
 		$dodgeTimer.start()
+		$sfx/dodge.play()
 		$dodgeCooldown.start()
 
 func attack():
@@ -96,18 +100,21 @@ func attack():
 		global.player_attack_type = Color(1, 0, 0)
 		$attackAnim.play("attackR")
 		$dealAttackTimer.start()
+		$sfx/attackR.play()
 			
 	elif Input.is_action_just_pressed("attackB") and !is_dodging and !global.player_current_attack:
 		global.player_current_attack = true
 		global.player_attack_type = Color(0, 0, 1)
 		$attackAnim.play("attackB")
 		$dealAttackTimer.start()
+		$sfx/attackB.play()
 	
 	elif Input.is_action_just_pressed("attackG") and !is_dodging and !global.player_current_attack:
 		global.player_current_attack = true
 		global.player_attack_type = Color(0, 1, 0)
 		$attackAnim.play("attackG")
 		$dealAttackTimer.start()
+		$sfx/attackG.play()
 
 func update_healthbar():
 	var healthbar = $healthbar
@@ -117,7 +124,7 @@ func update_healthbar():
 		healthbar.visible = true
 	else:
 		healthbar.visible = false
-		
+
 func player():
 	pass
 
@@ -156,3 +163,11 @@ func _on_player_attack_hitbox_area_entered(area: Area2D) -> void:
 func _on_player_attack_hitbox_area_exited(area: Area2D) -> void:
 	if "attack_range" in area.name:
 		enemy_in_attack_range = false
+
+func _on_player_hitbox_area_entered(area: Area2D) -> void:
+	if "attack_range" in area.name:
+		player_in_enemy_attack = true
+
+func _on_player_hitbox_area_exited(area: Area2D) -> void:
+	if "attack_range" in area.name:
+		player_in_enemy_attack = false

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var speed = 150
-var health = 100
+var health = 1
 var basic_damage = 1
 var match_damage = 5
 
@@ -36,17 +36,22 @@ func pursuit():
 					$AnimatedSprite2D.play("attackR")
 					$AttackAnim.play("effectR")
 					$AttackAnim.flip_h = (player.position.x - position.x) > 0
+					$sfx/slash.play()
 				Color(0, 1, 0):
 					$AnimatedSprite2D.play("attackG")
 					$AttackAnim.play("effectG")
 					$AttackAnim.flip_h = (player.position.x - position.x) > 0
+					$sfx/bass.play()
 				Color(0, 0, 1):
 					$AnimatedSprite2D.play("attackB")
 					$AttackAnim.play("effectB")
 					$AttackAnim.flip_h = (player.position.x - position.x) > 0
+					$sfx/slash.play()
 				_:
 					pass
 			global.boss_current_attack = true
+			
+			
 		elif player_in_attack_area and global.boss_attack_type == Color(1, 1, 1):
 			position += (player.position - position)/speed
 			$AnimatedSprite2D.play("walk")
@@ -64,6 +69,7 @@ func deal_with_damage():
 			$takeDamage.start()
 			can_be_damaged = false
 			health -= basic_damage
+			$sfx/lowdmg.play()
 		elif  player_in_attack_area and global.player_current_attack == true and global.boss_on_beat and global.boss_attack_type == global.player_attack_type:
 			$takeDamage.start()
 			can_be_damaged = false
@@ -76,8 +82,10 @@ func death():
 	global.boss_dead = true
 	$AnimatedSprite2D.play("death")
 	$AnimatedSprite2D.flip_h = (player.position.x - position.x) > 0
+	$sfx/death.play()
+	$Music.queue_free()
 	$deathAnim.start()
-	
+
 func update_healthbar():
 	var healthbar = $healthbar
 	healthbar.value = health

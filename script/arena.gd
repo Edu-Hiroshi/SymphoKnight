@@ -11,6 +11,7 @@ func victory_check():
 	if global.boss_dead and gambiarra:
 		gambiarra = false
 		$victoryTimer.start()
+		$sfx/victoryMusic.play()
 		$player/victoryText.visible = true
 
 func _on_victory_timer_timeout() -> void:

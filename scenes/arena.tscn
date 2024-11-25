@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://script/arena.gd" id="1_i2d27"]
 [ext_resource type="PackedScene" uid="uid://dmvpxtfxtrd8r" path="res://scenes/boss.tscn" id="2_ne7xt"]
 [ext_resource type="Texture2D" uid="uid://b5s6pw5ogdjm1" path="res://sprites/Background.png" id="3_2st12"]
-[ext_resource type="PackedScene" uid="uid://cgt2m8qkkh51f" path="res://scenes/music_test.tscn" id="5_ay74r"]
 [ext_resource type="FontFile" uid="uid://ck6k1bx8p2g4r" path="res://sprites/ui/3666-font.otf" id="5_m0f13"]
+[ext_resource type="AudioStream" uid="uid://de1byfc1tbunw" path="res://sfx/victory.mp3" id="6_ihhiu"]
 
-[sub_resource type="Image" id="Image_wmrhu"]
+[sub_resource type="Image" id="Image_g12lw"]
 data = {
 "data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 1, 179, 179, 179, 20, 188, 188, 188, 19, 255, 255, 255, 1, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 179, 179, 179, 20, 180, 180, 180, 64, 180, 180, 180, 64, 188, 188, 188, 19, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 188, 188, 188, 19, 180, 180, 180, 64, 180, 180, 180, 64, 188, 188, 188, 19, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 1, 188, 188, 188, 19, 188, 188, 188, 19, 255, 255, 255, 1, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
 "format": "RGBA8",
@@ -17,9 +17,9 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_6eahs"]
-image = SubResource("Image_wmrhu")
+image = SubResource("Image_g12lw")
 
-[sub_resource type="Image" id="Image_838ne"]
+[sub_resource type="Image" id="Image_8nvcf"]
 data = {
 "data": PackedByteArray(181, 181, 181, 48, 179, 179, 179, 50, 213, 213, 213, 6, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 179, 179, 179, 50, 180, 180, 180, 64, 180, 180, 180, 54, 213, 213, 213, 6, 255, 255, 255, 0, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 204, 204, 204, 5, 178, 178, 178, 53, 180, 180, 180, 64, 180, 180, 180, 54, 213, 213, 213, 6, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 255, 255, 255, 0, 204, 204, 204, 5, 182, 182, 182, 52, 180, 180, 180, 64, 180, 180, 180, 51, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 255, 255, 255, 0, 213, 213, 213, 6, 180, 180, 180, 54, 180, 180, 180, 64, 179, 179, 179, 50, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 213, 213, 213, 6, 180, 180, 180, 54, 180, 180, 180, 64, 183, 183, 183, 53, 170, 170, 170, 6, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 182, 182, 182, 49, 180, 180, 180, 64, 183, 183, 183, 53, 170, 170, 170, 6, 255, 255, 255, 0, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 181, 181, 181, 41, 182, 182, 182, 49, 170, 170, 170, 6, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64),
 "format": "RGBA8",
@@ -29,7 +29,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_e74mg"]
-image = SubResource("Image_838ne")
+image = SubResource("Image_8nvcf")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j7xq8"]
 content_margin_left = 4.0
@@ -125,8 +125,6 @@ text = " VICTORY"
 [node name="boss" parent="." instance=ExtResource("2_ne7xt")]
 position = Vector2(0, -1000)
 
-[node name="MusicTest" parent="boss" instance=ExtResource("5_ay74r")]
-
 [node name="background" type="Sprite2D" parent="."]
 z_index = -2
 texture_repeat = 2
@@ -141,7 +139,13 @@ polygon = PackedVector2Array(-1755, -1404, -1748, 1247, 1751, 1252, 1750, -1398)
 [node name="startPosition" type="Marker2D" parent="."]
 
 [node name="victoryTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 6.0
 one_shot = true
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="victoryMusic" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("6_ihhiu")
+volume_db = -10.0
 
 [connection signal="timeout" from="victoryTimer" to="." method="_on_victory_timer_timeout"]

@@ -1,9 +1,11 @@
-[gd_scene load_steps=17 format=4 uid="uid://d2c2celveskyv"]
+[gd_scene load_steps=19 format=4 uid="uid://d2c2celveskyv"]
 
 [ext_resource type="Script" path="res://script/title_screen.gd" id="1_7epaj"]
 [ext_resource type="Texture2D" uid="uid://qcvcw1s2cwpm" path="res://sprites/ui/logo.png" id="1_mlc50"]
 [ext_resource type="Texture2D" uid="uid://5wyrbomuwuy6" path="res://sprites/ui/game screen.png" id="1_uwa5y"]
 [ext_resource type="Theme" uid="uid://bx1dqvrohun4x" path="res://sprites/buttonstyle.tres" id="4_dlpvt"]
+[ext_resource type="AudioStream" uid="uid://7tncxvyj001v" path="res://sfx/select.mp3" id="5_mhi36"]
+[ext_resource type="AudioStream" uid="uid://dl438hy0u71pw" path="res://sfx/spooky.mp3" id="6_lpj3v"]
 
 [sub_resource type="Image" id="Image_o8uo0"]
 data = {
@@ -1905,5 +1907,19 @@ layout_mode = 2
 theme = ExtResource("4_dlpvt")
 text = "Quit"
 
+[node name="sfx" type="Node" parent="."]
+
+[node name="buttonHover" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("5_mhi36")
+volume_db = -5.0
+max_polyphony = 3
+
+[node name="spooky" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("6_lpj3v")
+volume_db = 5.0
+autoplay = true
+
+[connection signal="mouse_entered" from="layout/VBoxContainer/start" to="." method="_on_start_mouse_entered"]
 [connection signal="pressed" from="layout/VBoxContainer/start" to="." method="_on_start_pressed"]
+[connection signal="mouse_entered" from="layout/VBoxContainer/quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="layout/VBoxContainer/quit" to="." method="_on_quit_pressed"]

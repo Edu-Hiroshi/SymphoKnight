@@ -1,10 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://dx530lkvybmh3"]
+[gd_scene load_steps=17 format=3 uid="uid://dx530lkvybmh3"]
 
-[ext_resource type="Script" path="res://script/gameover.gd" id="1_d4g8k"]
+[ext_resource type="Script" path="res://scenes/endscreen.gd" id="1_yd4y7"]
 [ext_resource type="FontFile" uid="uid://ck6k1bx8p2g4r" path="res://sprites/ui/3666-font.otf" id="2_1n3wo"]
 [ext_resource type="Theme" uid="uid://bx1dqvrohun4x" path="res://sprites/buttonstyle.tres" id="3_20q5t"]
+[ext_resource type="AudioStream" uid="uid://7tncxvyj001v" path="res://sfx/select.mp3" id="4_db7n3"]
+[ext_resource type="AudioStream" uid="uid://ioywokoiql41" path="res://sfx/fim.mp3" id="4_owr40"]
 
-[sub_resource type="Image" id="Image_0wf3n"]
+[sub_resource type="Image" id="Image_r4pa1"]
 data = {
 "data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 1, 179, 179, 179, 20, 188, 188, 188, 19, 255, 255, 255, 1, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 179, 179, 179, 20, 180, 180, 180, 64, 180, 180, 180, 64, 188, 188, 188, 19, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 188, 188, 188, 19, 180, 180, 180, 64, 180, 180, 180, 64, 188, 188, 188, 19, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 1, 188, 188, 188, 19, 188, 188, 188, 19, 255, 255, 255, 1, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
 "format": "RGBA8",
@@ -14,9 +16,9 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_sxdxe"]
-image = SubResource("Image_0wf3n")
+image = SubResource("Image_r4pa1")
 
-[sub_resource type="Image" id="Image_oj3x1"]
+[sub_resource type="Image" id="Image_2u6rh"]
 data = {
 "data": PackedByteArray(181, 181, 181, 48, 179, 179, 179, 50, 213, 213, 213, 6, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 179, 179, 179, 50, 180, 180, 180, 64, 180, 180, 180, 54, 213, 213, 213, 6, 255, 255, 255, 0, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 204, 204, 204, 5, 178, 178, 178, 53, 180, 180, 180, 64, 180, 180, 180, 54, 213, 213, 213, 6, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 255, 255, 255, 0, 204, 204, 204, 5, 182, 182, 182, 52, 180, 180, 180, 64, 180, 180, 180, 51, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 255, 255, 255, 0, 213, 213, 213, 6, 180, 180, 180, 54, 180, 180, 180, 64, 179, 179, 179, 50, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 213, 213, 213, 6, 180, 180, 180, 54, 180, 180, 180, 64, 183, 183, 183, 53, 170, 170, 170, 6, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 182, 182, 182, 49, 180, 180, 180, 64, 183, 183, 183, 53, 170, 170, 170, 6, 255, 255, 255, 0, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64, 181, 181, 181, 41, 182, 182, 182, 49, 170, 170, 170, 6, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 180, 180, 180, 64, 180, 180, 180, 64),
 "format": "RGBA8",
@@ -26,7 +28,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_vvkoi"]
-image = SubResource("Image_oj3x1")
+image = SubResource("Image_2u6rh")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r3ajs"]
 content_margin_left = 4.0
@@ -191,14 +193,14 @@ _data = {
 "fade_in": SubResource("Animation_yigq8")
 }
 
-[node name="Gameover" type="Control"]
+[node name="endScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_d4g8k")
+script = ExtResource("1_yd4y7")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -255,5 +257,19 @@ libraries = {
 }
 autoplay = "fade_in"
 
+[node name="sfx" type="Node" parent="."]
+
+[node name="buttonHover" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("4_db7n3")
+volume_db = -5.0
+max_polyphony = 3
+
+[node name="win" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("4_owr40")
+volume_db = -10.0
+autoplay = true
+
+[connection signal="mouse_entered" from="VBoxContainer/tryagain" to="." method="_on_tryagain_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/tryagain" to="." method="_on_tryagain_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_quit_pressed"]
