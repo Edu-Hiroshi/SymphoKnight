@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 var speed = 150
 var health = 100
-var basic_damage = 1
-var match_damage = 5
+var basic_damage = 2
+var match_damage = 10
 
 var can_be_damaged = true
 var player_in_pursuit_area = false

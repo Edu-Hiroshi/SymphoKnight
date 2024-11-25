@@ -5,11 +5,10 @@ var beat_times = [ 0.150,  1.011,  2.405,  3.276,
 				   4.496,  5.437,  6.657,  7.668,
 				   8.819,  9.725, 11.014, 12.060,
 				  13.190, 14.200, 15.406, 16.278, 17.463,
-				  18.500,
-				  34.960, 35.760, 37.160, 38.000, 39.320, 40.120,
-				  41.520, 42.360, 43.680, 44.480, 45.840, 46.680,
-				  48.040, 48.440, 50.240, 51.080,
-				  52.500]
+				  34.960, 35.760, 37.160, 38.000,
+				  39.320, 40.120, 41.520, 42.360,
+				  43.680, 44.480, 45.840, 46.680,
+				  48.040, 48.440, 50.240, 51.080]
 
 var current_beat_index = 0
 var tolerance = 0.05  # Buffer to account for small timing mismatches
@@ -23,11 +22,10 @@ var beat_colors = [r, b, r, g,
 				   r, b, r, g,
 				   r, b, g, g, 
 				   r, g, b, b, g,
-				   w,
-				   b, r, r, g, b, r,
-				   g, b, r, r, b, g,
-				   r, b, g, r,
-				   w]
+				   r, b, r, g,
+				   r, b, r, g,
+				   r, b, g, g, 
+				   r, g, b, b]
 
 @onready var song = $AudioStreamPlayer
 @onready var color_rect = $ColorRect
@@ -42,7 +40,8 @@ func _process(_delta):
 	# Check if there are more beats to process
 	if current_beat_index < beat_times.size():
 		var next_beat_time = beat_times[current_beat_index] - 0.05
-
+		global.next_beats = beat_colors.slice(current_beat_index - 1, current_beat_index + 2)
+		
 		# Check if we're within the tolerance range of the next beat
 		if current_time >= next_beat_time - tolerance:
 			change_color()
