@@ -19,6 +19,10 @@ cd SymphoKnight
 
 Godot versão 4.3 ou superior.
 
+# TO DO (bugs)
+
+- Alinhar corretamente UI na tela para monitores de diferentes resoluções;
+- Redimencionar elementos na tela para monitores de diferentes resoluções.
 
 # 👥 Contribuidores
 
