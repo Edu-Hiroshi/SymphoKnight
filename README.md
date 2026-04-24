@@ -19,6 +19,15 @@ cd SymphoKnight
 
 Godot versão 4.3 ou superior.
 
+## Screenshots
+
+Tela de início.
+![Tela de início, com a opção de inicio de jogo (logo) ou saída.](./sample/sample_00.png)
+
+Arena.
+![Exemplo de gameplay, com a presença do maestro e seu oponente.](./sample/sample_01.png)
+
+
 # TO DO (bugs)
 
 - Alinhar corretamente UI na tela para monitores de diferentes resoluções;
